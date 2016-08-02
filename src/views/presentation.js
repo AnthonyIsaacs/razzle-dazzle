@@ -8,8 +8,8 @@ const processSlides = (content) => {
 }
 
 module.exports = (state, prev, send) => {
-  let slides = state.rd.defaultFile ?
-    slideGrid(processSlides(state.rd.defaultFile.content), state.rd.slideFocus) :
+  let slides = state.rd.mainFile ?
+    slideGrid(processSlides(state.rd.mainFile.content), state.rd.slideFocus) :
     slideGrid(processSlides(state.rd.defaultFile.content), state.rd.slideFocus)
 
   let content = html`<div></div>`

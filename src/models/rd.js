@@ -1,11 +1,10 @@
+const tutorial = require('../../libs/tutorial')
+
 module.exports = {
   namespace: 'rd',
   state: {
     mainFile: {},
-    defaultFile: {
-      name: 'Introduction',
-      content: '# hello --- # there'
-    },
+    defaultFile: tutorial,
     assets: {},
     slideFocus: 0
   },
@@ -22,7 +21,13 @@ module.exports = {
           content: payload.content
         }
       }
-    }
+    },
+    editorUpdate: (payload, state) => ({
+      mainFile: {
+        name: 'stuff',
+        content: payload
+      }
+    })
   },
   effects: {
     filesDrop: (data, state, send, done) => {
