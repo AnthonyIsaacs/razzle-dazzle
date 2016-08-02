@@ -1,0 +1,11 @@
+{
+  "generator-choo": {
+    "template": {
+      "projectName": "razzle-dazzle",
+      "projectDescription": "For slid presentation",
+      "githubUsername": "ronnross",
+      "name": "Ronn Ross",
+      "email": "ronn.ross@kroger.com"
+    }
+  }
+}
