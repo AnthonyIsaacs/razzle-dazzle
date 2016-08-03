@@ -1,7 +1,35 @@
-html {
-  color: #393939;
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html,body{
+  height:100%;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.full-height{
+	height:100%;
+}
+
+.page-container {
+  padding: 50px;
+  height:100%;
+}
+
+.edit-area {
+  width: 100%;
+  min-height: 500px;
+}
+/*.more{
+  display:block;
+  position:absolute;
+  bottom:20px;
+  text-align:center;
+}*/
+
+
+/*
 a {
   color: #b30816;
   text-decoration: none;
@@ -20,9 +48,7 @@ code {
   padding-right: 2px;
 }
 
-body {
-  background: #eee;
-}
+
 
 .container {
   margin: 0 auto;
@@ -35,10 +61,6 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
-.well {
-  padding: 0.5em;
-  border: thin solid #bbb;
-}
 .site-header {
   clear: both;
   display: block;
@@ -140,29 +162,6 @@ p {
   line-height: 1.2;
 }
 
-.footer-meta {
-  overflow: hidden;
-  height: 50px;
-  line-height: 50px;
-  color: rgba(255,255,255,0.8);
-  background-color: #222;
-}
-
-.site-footer {
-  margin-top: 20px;
-  padding: 10px 0 0 0;
-  background-color: #444;
-  color: #fff;
-}
-
-.site-footer h5 {
-  font-size: 18px;
-}
-
-.site-footer a {
-  color: #eee;
-}
-
 .pull-right {
   float: right!important;
 }
@@ -170,3 +169,4 @@ p {
 .pull-left {
   float: left!important;
 }
+*/

@@ -1,17 +1,21 @@
 const html = require('choo/html')
 const header = require('../components/site-header')
 const footer = require('../components/site-footer')
+const menu = require('../components/menu')
 
 module.exports = (state, prev, send) => html`
-  <main>
-    ${header()}
-    <section class="container color-white well center-text">
-      <h1>Drag Area</h1>
-      <div ondragover=${dragHandler} ondragleave=${dragOutHandler} ondrop=${(e) => dropHandler(e, send)}>
-        Drag Here!
-      </div>
+  <main class="full-height">
+    <section class="page-container" ondragover=${dragHandler} ondragleave=${dragOutHandler} ondrop=${(e) => dropHandler(e, send)}>
+      <h1>Razzle Dazzle</h1>
+      <h2>
+        Welcome! Just drag a markdown file onto the page &
+        I will generate your slides. If you want to make them
+        razzle dazzle drag some images in.
+      </h2>
+
+
+      ${menu()}
     </section>
-    ${footer()}
   </main>
 `
 
