@@ -1,52 +1,65 @@
 const tutorial = require('../../libs/tutorial')
+const marked = require('marked')
 
 module.exports = {
   namespace: 'rd',
   state: {
-    mainFile: {},
-    defaultFile: tutorial,
-    assets: {},
-    slideFocus: 0
+    name: "tutorial",
+    content: tutorial,
+    slides: [],
+    assets: []
   },
   reducers: {
-    fileRead: (payload, state) => {
-      if (payload.name.indexOf(".md") > -1) {
-        state.mainFile = {
-          name: payload.name,
-          content: payload.content
-        }
-      } else {
-        state.assets = {
-          name: payload.name,
-          content: payload.content
-        }
-      }
+    updatePresentationAssets: () => {
+      //state.mainFile
     },
-    editorUpdate: (payload, state) => ({
-      mainFile: {
-        name: 'stuff',
-        content: payload
-      }
-    })
+    addMainFile: (payload, state) => {
+      state.name = payload.name
+    },
+    addAssetFile: (payload, state) => {
+      state.assets.push(payload)
+    },
+    editorUpdate: (payload, state) => {
+      state.content = payload.content
+      state.slides = state.content.split('---').map((slide) => {
+        return marked(slide)
+      })
+    }
   },
-  effects: {
-    filesDrop: (data, state, send, done) => {
 
-      function getReaderHandler(fileName) {
+  effects: {
+    init: (data, state, send, done) => {
+      send('rd:editorUpdate', {content: tutorial}, done)
+    },
+    handleDroppedFiles: (data, state, send, done) => {
+
+      function getMainHandler(fileName) {
+        send('rd:addMainFile', { name: fileName }, done)
+        return function (e) {
+          send('rd:editorUpdate', { content: e.target.result }, done)
+        }
+      }
+
+      function getAssetHandler(fileName) {
         return function (e) {
           console.log('in reader', e)
-          send('rd:fileRead', {name: fileName, content: e.target.result}, done)
+          send('rd:addAssetFile', { name: fileName, content: e.target.result }, done)
         }
       }
 
       for (let i = 0; i < data.length; i++) {
         let reader = new FileReader()
-        //check for text or binary
-        reader.onload = getReaderHandler(data[i].name)
-        reader.readAsText(data[i])
+        if(data[i].name.indexOf('.md')) {
+          reader.onload = getMainHandler(data[i].name)
+          reader.readAsText(data[i])
+        } else {
+          reader.onload = getAssetHandler(data[i].name)
+          reader.readAsBinary(data[i])
+        }
       }
     }
   },
+
   subscriptions: {
     keyboardCapture: (send, done) => {
       document.addEventListener('keydown', function (event) {

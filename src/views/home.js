@@ -4,7 +4,7 @@ const footer = require('../components/site-footer')
 const menu = require('../components/menu')
 
 module.exports = (state, prev, send) => html`
-  <main class="full-height">
+  <main onload=${() => send('rd:init')} class="full-height">
     <section class="page-container" ondragover=${dragHandler} ondragleave=${dragOutHandler} ondrop=${(e) => dropHandler(e, send)}>
       <h1>Razzle Dazzle</h1>
       <h2>
@@ -38,5 +38,5 @@ function dragOutHandler(e) {
 function dropHandler(e, send) {
   stopBehavior(e)
   let files = e.target.files || e.dataTransfer.files
-  send('rd:filesDrop', files)
+  send('rd:handleDroppedFiles', files)
 }

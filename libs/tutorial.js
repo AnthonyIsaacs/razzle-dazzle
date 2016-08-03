@@ -1,6 +1,4 @@
-module.exports = {
-  name: 'Razzle Dazzle Tutorial',
-  content: `
+module.exports =  `
 # Welcome
 Thanks for using Razzle Dazzle
 ---
@@ -10,4 +8,4 @@ This is a getting starting guide
 # Steps
 - step 1
 - step 2
-- step 3`}
+- step 3`
