@@ -13,6 +13,6 @@ module.exports = (state, prev, send) => {
       <div class="col s6">
         ${slideGrid(state, send)}
       </div>
-      ${menu()}
+      ${menu('edit')}
     </main>`
 }

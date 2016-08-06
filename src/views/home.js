@@ -14,7 +14,7 @@ module.exports = (state, prev, send) => html`
       </h2>
 
 
-      ${menu()}
+      ${menu(state)}
     </section>
   </main>
 `

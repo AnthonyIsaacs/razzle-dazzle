@@ -1,8 +1,10 @@
 const html = require('choo/html')
 
-module.exports = (state, prev, send) => html`
+module.exports = (mode) => html`
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a href="/edit" class="btn-floating btn-large blue"><i class="material-icons">mode_edit</i></a>
-    <a href="/presentation" class="btn-floating btn-large blue"><i class="material-icons">play_arrow</i></a>
+    ${ (mode === 'edit') ?
+  html`<a href="/presentation" class="btn-floating btn-large blue"><i class="material-icons">play_arrow</i></a>` :
+      html`<a href="/edit" class="btn-floating btn-large blue"><i class="material-icons">mode_edit</i></a>`
+    }
   </div>
 `
