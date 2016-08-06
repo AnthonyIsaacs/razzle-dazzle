@@ -1,4 +1,4 @@
 # razzle-dazzle
-*For slid presentation*
+*For slide presentations*
 
 ## Contributing
