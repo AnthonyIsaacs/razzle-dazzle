@@ -1,11 +1,11 @@
-const tutorial = require('../../libs/tutorial')
+// const tutorial = require('../../libs/tutorial')
 const marked = require('marked')
 
 module.exports = {
   namespace: 'rd',
   state: {
-    name: "tutorial",
-    content: tutorial,
+    name: "",
+    content: "",
     slides: [],
     assets: []
   },
@@ -24,12 +24,16 @@ module.exports = {
       state.slides = state.content.split('---').map((slide) => {
         return marked(slide)
       })
+    },
+    setUpTour: (payload, state) => {
+      state.name = payload.name
+      state.content = payload.content
     }
   },
 
   effects: {
     init: (data, state, send, done) => {
-      send('rd:editorUpdate', {content: tutorial}, done)
+      send('rd:editorUpdate', {content: ""}, done)
     },
     handleDroppedFiles: (data, state, send, done) => {
 
@@ -57,6 +61,23 @@ module.exports = {
           reader.readAsBinary(data[i])
         }
       }
+    },
+    tour: (data, state, send, done) => {
+      let setUpTour = {
+        name: 'Slide Tour',
+        content: `
+          # Welcome
+          Thanks for using Razzle Dazzle
+          ---
+          # Tutorial
+          This is a getting starting guide
+          ---
+          # Steps
+          - step 1
+          - step 2
+          - step 3`
+      }
+      send('rd:setUpTour', setUpTour, done)
     }
   },
 
