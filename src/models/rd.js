@@ -1,5 +1,6 @@
 // const tutorial = require('../../libs/tutorial')
 const marked = require('marked')
+const fileSaver = require('FileSaver.js')
 
 module.exports = {
   namespace: 'rd',
@@ -28,6 +29,12 @@ module.exports = {
     setUpTour: (payload, state) => {
       state.name = payload.name
       state.content = payload.content
+    },
+    exportFile: (payload, state) => {
+      console.log('in export')
+      let blob = new Blob([state.content], { type: "text/plain;charset=utf-8"})
+      let fileName = state.name || 'razzle-dazzle'
+      fileSaver.saveAs(blob, `${fileName}.md`)
     }
   },
 

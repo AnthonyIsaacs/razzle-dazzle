@@ -14,5 +14,6 @@ module.exports = (state, prev, send) => {
         ${slideGrid(state, send)}
       </div>
       ${menu('edit')}
+      <button onclick=${() => send('rd:exportFile')}>Export</button>
     </main>`
 }
