@@ -23,7 +23,13 @@ module.exports = {
     editorUpdate: (payload, state) => {
       let splitSlides = state.content.split('---')
       state.content = payload.content
-      state.name = R.head(splitSlides)
+      let title = R.pipe(
+        R.trim,
+        R.split('#'),
+        R.tail
+      )
+
+      state.name = title(R.head(splitSlides))
 
       state.slides = R.tail(splitSlides).map((slide) => {
         return marked(slide)

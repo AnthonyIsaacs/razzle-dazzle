@@ -20,6 +20,7 @@ body {
 .edit-area {
   width: 100%;
   min-height: 500px;
+  border: none;
 }
 /*.more{
   display:block;

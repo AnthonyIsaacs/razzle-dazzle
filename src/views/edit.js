@@ -6,13 +6,21 @@ const slideGrid = require('../components/slide-grid')
 module.exports = (state, prev, send) => {
   return html`
     <main class="row">
-      ${header()}
+
       <div class="col s6">
-        <h4>${state.rd.name}</h4>
-        <textarea oninput=${(e) => send('rd:editorUpdate', {content: e.target.value})} class="edit-area" autofocus="true">
+        <div class="card">
+          <div class="card-image">
+            <textarea oninput=${(e) => send('rd:editorUpdate', {content: e.target.value})} class="edit-area" autofocus="true">
           ${state.rd.content}
         </textarea>
+          </div>
+          <div class="card-action">
+            <a href="#">${state.rd.name}</a>
+          </div>
+        </div>
       </div>
+
+
       <div class="col s6">
         ${slideGrid(state, send)}
       </div>
