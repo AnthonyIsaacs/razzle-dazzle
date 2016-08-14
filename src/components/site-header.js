@@ -1,19 +1,18 @@
 const html = require('choo/html')
 
 module.exports = (state, prev, send) => html`
-  <header class="site-header card color-white">
-    <div class="container">
-      <a href="/" class="brand">
-        <div class="logo">🚋</div>
-        <h1>razzle-dazzle</h1>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">
+        <i class="material-icons">view_module</i>
+        Razzle Dazzle
       </a>
-      <nav class="site-navigation">
-        <a href="/">Home</a>
-        <a href="/new">New</a>
-        <a href="/edit">Edit</a>
-        <a href="/slides">Slides</a>
-        <a href="/presentation">Presentation</a>
-      </nav>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+        <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 `
