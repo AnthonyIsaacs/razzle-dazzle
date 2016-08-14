@@ -16,6 +16,7 @@
   "dependencies": {
     "choo": "^3.2.0",
     "filesaver.js": "^0.2.0",
+    "highlight.js": "^9.6.0",
     "marked": "^0.3.6",
     "materialize-css": "^0.97.7",
     "ramda": "^0.22.1"
