@@ -22,6 +22,14 @@ body {
   min-height: 500px;
   border: none;
 }
+
+.slide-grid {
+
+}
+
+.slide-grid .card > * {
+  zoom: .5
+}
 /*.more{
   display:block;
   position:absolute;
