@@ -8,15 +8,38 @@ const { existInLocalStorage } = require('../libs/localStorage')
 module.exports = (state, prev, send) => html`
   <main onload=${() => send('rd:init')} class="full-height">
     <section class="page-container" ondragover=${dragHandler} ondragleave=${dragOutHandler} ondrop=${(e) => dropHandler(e, send)}>
-      <h1>Razzle Dazzle</h1>
-      ${ existInLocalStorage('razzleDazzle') ?
-            html`<h1>You have something</h1>` :
-            html`<h2>
-                    Welcome! We have three options: Drag an existing project onto the page,
-                    <a href="/edit">create a new project</a>, or <a href="/tour">take a tour</a>.
-                  </h2>`
-      }
-      ${menu(state)}
+      <h2> Welcome! Drag an existing project onto the page</h2>
+      <h5>Recent</h5>
+      <div class="row">
+        <div class="col s2 m4 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="http://materializecss.com/images/office.jpg">
+              <span class="card-title">New Deck</span>
+            </div>
+            <div class="card-action">
+              <a href="/edit">Create New</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h5>Examples</h5>
+      <div class="row">
+        <div class="col s2 m4 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="http://materializecss.com/images/sample-1.jpg">
+              <span class="card-title">Look Around</span>
+            </div>
+            <div class="card-content">
+              <p>Take a tour of Razzle Dazzle's features.</p>
+            </div>
+            <div class="card-action">
+              <a href="/tour">Take a tour</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 `

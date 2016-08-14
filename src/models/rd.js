@@ -1,6 +1,6 @@
-// const tutorial = require('../../libs/tutorial')
 const marked = require('marked')
 const fileSaver = require('FileSaver.js')
+const R = require('ramda')
 
 module.exports = {
   namespace: 'rd',
@@ -21,8 +21,11 @@ module.exports = {
       state.assets.push(payload)
     },
     editorUpdate: (payload, state) => {
+      let splitSlides = state.content.split('---')
       state.content = payload.content
-      state.slides = state.content.split('---').map((slide) => {
+      state.name = R.head(splitSlides)
+
+      state.slides = R.tail(splitSlides).map((slide) => {
         return marked(slide)
       })
     },
